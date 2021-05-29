@@ -11,16 +11,15 @@ This project consists of 3 R files.
 
 1. coordinate_descent.R
     This file constis of 4 functions.
+    
     1.1 compute_y <- function(A, B, c, lambda, x)
         Returns the value of y based on the quadratic equation given above.
         Parameters: A: array_like
                        p * p dimension input array. Function return false if not positive definite.
                        e.g. A = matrix(c(4,1,0,2), nrow = 2)
-                       
                     B: array_like
                        P * 1 dimension input array.
                        e.g. B = matrix(c(-2,-4), nrow = 2)
-                       
                     c: scalar
                        e.g. c = 0
                        
