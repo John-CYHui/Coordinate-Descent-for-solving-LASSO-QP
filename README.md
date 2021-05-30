@@ -12,19 +12,67 @@ This project consists of 3 R files.
 1. coordinate_descent.R  
     This file constis of 4 functions.
     
-    1.1 compute_y <- function(A, B, c, lambda, x)  
+    **1.1 compute_y <- function(A, B, c, lambda, x)**  
         Returns the value of y based on the quadratic equation given above.  
         
         Parameters: A: array_like  
-                       p * p dimension input array. Function return false if not positive definite.  
+                       p * p dimension input array.  
                        
                     B: array_like  
-                       P * 1 dimension input array.  
+                       p * 1 dimension input array.  
                        
                     c: scalar  
                     
+                    lambda: scalar  
+                    
+                    x: array_like  
+                       p * 1 dimension input array  
+                       
+        Returns:    y: scalar
+                       
                     Example:
                        A = matrix(c(4,1,0,2), nrow = 2)
                        B = matrix(c(-2,-4), nrow = 2)
                        c = 0
-    1.2 coord_descent <- function(A, B, c, lambda, init_x0, max_iter = 100, max_dist = 10^-5, plt = 0)
+                       lambda = 10  
+                       init_x0 = matrix(c(3,-3), nrow = 2)
+                       prev_y = compute_y(A,B,c, lambda, init_x0)
+                       
+    **1.2 coord_descent <- function(A, B, c, lambda, x, max_iter, max_dist, plt)**  
+        Perform coordinate descent and return the minimization point x, the optimized value and the L2 distance path.  
+        
+        Parameters: A: array_like  
+                       p * p dimension input array. Function will check and return false if not positive definite.  
+                       
+                    B: array_like  
+                       p * 1 dimension input array.  
+                       
+                    c: scalar  
+                    
+                    lambda: scalar  
+                    
+                    x: array_like  
+                       p * 1 dimension input array
+                    
+                    max_iter: scalar
+                       By default, max_iter = 100. Terminate algorithm and return if the number of iteration reaches max_iter
+                            
+                   max_dist: scalar
+                       By default, max_dist = 10^-5. Terminate algorithm and return if the distance moved between iterations is less than max_dist
+                   
+                   plt: 0 or 1  
+                       By default, plt = 0. plt = 1 plots the descent path for 2 dimesional case (Only enable this when p = 2)
+                       
+       Returns:    result_list: a list consists of 3 results  
+                   
+                   result_list$min_point : array_like  
+                       p * 1 dimension output array. The optimized value for x
+                   
+                   result_list$Optimize value : scalar
+                       The optimization value y.
+                   
+                   result_list$distance : list
+                       A list consists of the distance moved per iteration
+                       
+                   
+                 
