@@ -132,13 +132,13 @@ This project consists of 3 R files.
     This file loads the data set "diabetes.csv" where there is 442 examples and 11 features. The goal is to predict Y using the other 10 features.
     It will convert the LASSO regression problem to QP problem and solve with coordinate descent and leave one out cross-validation.
     This file shows LASSO solution path and serve as checking for correct LASSO implementation.  
-    \
-    \
-    \
 
-Convert LASSO to Quadratic Programming problem:
+    
+
+## Convert LASSO to Quadratic Programming problem
 
 LASSO problem is as follows,    
+
 $$
 \displaystyle\sum_{i=1}^{n} \bigg(y_i-\beta_0-\displaystyle\sum_{j=1}^{p}x_{ij}b_j\bigg)^2+\lambda\displaystyle\sum_{j=1}^{p}|b_j|
 $$
@@ -171,10 +171,13 @@ $$
 $$
 
 Therefore the LASSO problem can be expressed as quadratic programming problem by the following formulation:
+
 $$
 \text{min }\tilde{\beta}^T(\tilde{X}^TX)\tilde{\beta}-2Y^T\tilde{X}\tilde{\beta}+||Y||^2_2+\lambda||{\beta}||_1=\text{ min }x^TAx+B^Tx+c+\lambda||x||_1\\\text{where }x = \tilde{\beta}, A = \tilde{X}^T\tilde{X}, B^T=-2Y^T\tilde{X}, c = ||Y||^2_2
 $$
-Perform coordinate descent on QP problem:  
+
+Perform coordinate descent on QP problem:
+
 $$
 \text{ min }f(x) = x^TAx+B^Tx+c+\lambda||x||_1
 $$
